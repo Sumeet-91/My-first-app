@@ -2,10 +2,10 @@
 from flask import Flask, render_template, request
 
 #initialize flask
-IntFlask = Flask(__name__)
+app = Flask(__name__)
 
 #route your webpage
-@IntFlask.route('/')
+@app.route('/')
 
 def visitors():
 
@@ -26,7 +26,7 @@ def visitors():
     return render_template('index.html', Visits=visitors_count)
 
 #route your webpage
-@IntFlask.route('/', methods = ['POST'])
+@app.route('/', methods = ['POST'])
 def covid_stats():
     # Load current count
     counter_read_file = open("count.txt", "r")
@@ -41,4 +41,4 @@ def covid_stats():
 
 #add code for executing flask
 if __name__== '__main__':
-    IntFlask.run()
+    app.run()
